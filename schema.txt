@@ -1,0 +1,53 @@
+Users: Menyimpan data pengguna yang dapat melakukan reservasi.
+
+Kolom:
+
+UserID (Primary Key)
+Nama
+Email
+NoHP
+Role (misalnya: mahasiswa, dosen, staf)
+Rooms: Menyimpan informasi tentang ruang lab yang dapat dipesan.
+
+Kolom:
+
+RoomID (Primary Key)
+NamaRuang
+Kapasitas
+Lokasi
+Fasilitas (opsional)
+Reservations: Menyimpan informasi tentang reservasi yang telah dibuat.
+
+Kolom:
+
+ReservationID (Primary Key)
+UserID (Foreign Key dari Users)
+RoomID (Foreign Key dari Rooms)
+TanggalReservasi
+WaktuMulai
+WaktuSelesai
+Status (misalnya: menunggu konfirmasi, disetujui, ditolak)
+Keterangan (opsional)
+Messages: Menyimpan catatan pesan yang dikirim melalui WA API.
+
+Kolom:
+
+MessageID (Primary Key)
+UserID (Foreign Key dari Users)
+Pesan
+WaktuPesan
+JenisPesan (misalnya: permintaan reservasi, konfirmasi, pembatalan)
+Logs: Menyimpan catatan log untuk keperluan audit dan monitoring.
+
+Kolom:
+
+LogID (Primary Key)
+UserID (Foreign Key dari Users)
+Tindakan (misalnya: membuat reservasi, mengubah reservasi, membatalkan reservasi)
+WaktuTindakan
+DetailTindakan
+Relasi antara entitas:
+
+Users dan Reservations terhubung melalui UserID, dimana satu pengguna dapat membuat banyak reservasi.
+Rooms dan Reservations terhubung melalui RoomID, dimana satu ruang lab dapat memiliki banyak reservasi.
+Users dan Messages terhubung melalui UserID, menandakan pengguna yang mengirim pesan.
